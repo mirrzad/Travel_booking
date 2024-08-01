@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Trips List {% endblock %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">R</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Departure Date</th>
+      <th scope="col">Return Date</th>
+      <th scope="col">Number of Travelers</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for trip in trips%}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ trip.destination }}</td>
+      <td>{{ trip.departure_date }}</td>
+      <td>{{ trip.return_date }}</td>
+      <td>{{ trip.number_of_travelers }}</td>
+      <td><a href="{% url 'bookings:update_trip' trip.id %}" class="btn btn-secondary">Edit</a></td>
+      <td><a href="{% url 'bookings:delete_trip' trip.id %}" class="btn btn-danger">Remove</a></td>
+    </tr>
+    <tr>
+  {% endfor %}
+</table>
+<p><a href="{% url 'bookings:create_trip' %}" class="btn btn-primary">Add Trip</a></p>
+
+{% endblock %}
+
