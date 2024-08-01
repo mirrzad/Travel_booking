@@ -4,7 +4,7 @@ from rest_framework import routers
 
 app_name = 'bookings_api'
 router = routers.SimpleRouter()
-router.register('trips', views.TripViewSet)
+router.register('trips', views.TripViewSet, basename='Trip')
 
 urlpatterns = []
 
